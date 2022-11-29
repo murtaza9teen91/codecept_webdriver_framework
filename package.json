@@ -6,6 +6,8 @@
   "scripts": {
     "test": "npx codeceptjs run-workers 1 --grep '(?=.*@newtest)' -c codecept.conf.js --verbose;",
     "test-headless": "HEADLESS=true npx codeceptjs run-workers 1 -c codecept.conf.js --verbose;",
+    "test1-headless": "HEADLESS=true npx codeceptjs run-workers 1 --grep @google -c codecept.conf.js --verbose;",
+    "test2-headless": "HEADLESS=true npx codeceptjs run-workers 1 --grep @facebook -c codecept.conf.js --verbose;",
     "report": "allure serve report",
     "clean": "rimraf report"
   },
