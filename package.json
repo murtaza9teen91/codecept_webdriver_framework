@@ -1,0 +1,24 @@
+{
+  "name": "codecept_webdriver_framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx codeceptjs run-workers 1 --grep '(?=.*@newtest)' -c codecept.conf.js --verbose;",
+    "test-headless": "HEADLESS=true npx codeceptjs run-workers 1 -c codecept.conf.js --verbose;",
+    "report": "allure serve report",
+    "clean": "rimraf report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "allure-commandline": "^2.20.1",
+    "codeceptjs": "^3.3.6",
+    "cucumber": "^6.0.7",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "@codeceptjs/configure": "^0.10.0"
+  }
+}
