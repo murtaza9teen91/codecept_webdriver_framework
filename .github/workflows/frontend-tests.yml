@@ -7,8 +7,8 @@ jobs:
   tests:
     runs-on: [self-hosted]
     steps:
-      - setup
-        run:
+      - name: setup
+        run: |
           # installing dependencies
           npm install
           # installing chrome browser
@@ -18,7 +18,7 @@ jobs:
           apt-get --only-upgrade install google-chrome-stable
           echo "google-chrome --version"
           
-      - tests-set-1
-        run:
+      - name: tests-set-1
+        run: |
           npm run test1-headless;
         
