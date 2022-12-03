@@ -4,8 +4,11 @@ on:
   workflow_dispatch:
   
 jobs:
-  tests:
+  setup:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
     steps:
       - name: setup
         run: |
@@ -18,7 +21,18 @@ jobs:
           apt-get --only-upgrade install google-chrome-stable
           echo "google-chrome --version"
           
-      - name: tests-set-1
+  tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+    needs: setup
+    
+    steps:
+      - name: run-tests
         run: |
           npm run test1-headless;
+    
+    
+    
         
