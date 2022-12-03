@@ -10,6 +10,9 @@ jobs:
       run:
         working-directory: ./
     steps:
+    
+      - uses: actions/checkout@v2
+      
       - name: setup
         run: |
           npm install
@@ -27,6 +30,9 @@ jobs:
     needs: setup
     
     steps:
+    
+      - uses: actions/checkout@v2
+      
       - name: run-tests
         run: |
           npm run test1-headless;
