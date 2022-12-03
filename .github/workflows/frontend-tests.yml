@@ -15,9 +15,9 @@ jobs:
       
       - name: setup
         run: |
-          rm /var/lib/apt/lists/lock
-          rm /var/cache/apt/archives/lock
-          rm /var/lib/dpkg/lock*
+          sudo rm /var/lib/apt/lists/lock
+          sudo rm /var/cache/apt/archives/lock
+          sudo rm /var/lib/dpkg/lock*
           npm install
           wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
           apt-get update
