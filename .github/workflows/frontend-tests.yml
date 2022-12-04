@@ -6,16 +6,15 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./
+#     defaults:
+#       run:
+#         working-directory: ./
     steps:
     
       - uses: actions/checkout@v2
       
       - name: setup
         run: |
-          sudo apt-get update && sudo apt-get upgrade
           sudo rm /var/lib/apt/lists/lock
           sudo rm /var/cache/apt/archives/lock
           sudo rm /var/lib/dpkg/lock*
@@ -36,9 +35,9 @@ jobs:
           
   tests:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./
+#     defaults:
+#       run:
+#         working-directory: ./
     needs: setup
     
     steps:
