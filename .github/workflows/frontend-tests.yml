@@ -15,7 +15,7 @@ jobs:
       
       - name: setup
         run: |
-          sudo rm /var/lib/apt/lists/lock
+          script --return --quiet -c "sudo rm /var/lib/apt/lists/lock" /dev/null
           sudo rm /var/cache/apt/archives/lock
           sudo rm /var/lib/dpkg/lock*
           # npm install
