@@ -1,4 +1,4 @@
-name: Frontend Tests
+name: Just Tests
 
 on:
   workflow_dispatch:
