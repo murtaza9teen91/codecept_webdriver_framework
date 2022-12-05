@@ -18,7 +18,7 @@ jobs:
           npm install -g webdriver-manager
           webdriver-manager update
           webdriver-manager start &
-          npm run test1-headless;
+          sleep 20 && npm run test1-headless;
           
   tests:
     runs-on: ubuntu-latest
