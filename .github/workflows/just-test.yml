@@ -18,13 +18,11 @@ jobs:
           npm install -g webdriver-manager
           webdriver-manager update
           webdriver-manager start &
-          sleep 30
           npm run test1-headless;
           
   tests:
     runs-on: ubuntu-latest
     needs: setup
-    
     steps:
     
       - uses: actions/checkout@v2
