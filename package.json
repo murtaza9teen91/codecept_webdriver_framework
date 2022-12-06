@@ -18,7 +18,8 @@
     "allure-commandline": "^2.20.1",
     "codeceptjs": "^3.3.6",
     "cucumber": "^6.0.7",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "webdriverio": "^6.12.1"
   },
   "dependencies": {
     "@codeceptjs/configure": "^0.10.0"
