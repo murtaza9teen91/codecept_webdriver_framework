@@ -15,6 +15,7 @@ jobs:
           pwd
           npm --version
           google-chrome --version
+          apt-get --only-upgrade install google-chrome-stable
           npm install
           npm install --save-dev webdriverio@^6.12.1
           npm install -g webdriver-manager
