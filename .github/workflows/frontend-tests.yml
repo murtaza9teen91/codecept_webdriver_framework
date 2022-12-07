@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  setup:
+  tests:
     runs-on: ubuntu-latest
     steps:
     
@@ -13,8 +13,8 @@ jobs:
       - name: setup
         run: |
           pwd
-          npm --version
-          google-chrome --version
+          echo NPM version is `npm --version`
+          echo Google Chrome version is `google-chrome --version`
           sudo apt-get --only-upgrade install google-chrome-stable
           npm install
           npm run clean
