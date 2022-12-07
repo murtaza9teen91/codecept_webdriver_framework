@@ -13,9 +13,10 @@ jobs:
       - name: setup
         run: |
           pwd
-          echo NPM version is `npm --version`
-          echo Google Chrome version is `google-chrome --version`
           sudo apt-get --only-upgrade install google-chrome-stable
+          echo node version: `node --version`
+          echo npm version: `npm --version`
+          echo google chrome browser version: `google-chrome --version`
           npm install
           npm run clean
           npm install -g webdriver-manager
