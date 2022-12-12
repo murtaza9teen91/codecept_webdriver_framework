@@ -46,7 +46,6 @@ jobs:
         run: find report/**/ -type f \( -name "*.xml" -o -name "*.png" \) -print0 | xargs -0 -I {} mv {} report/ghp_test_reports
         
       - name: Allure Report action from marketplace
-        if: steps.check-artifacts-files.outputs.has_files == 'true'
         uses: simple-elf/allure-report-action@master
         with:
           allure_results: report
@@ -56,7 +55,6 @@ jobs:
           subfolder: ghp_test_reports
           
       - name: Deploy report to Github Pages
-        if: steps.check-artifacts-files.outputs.has_files == 'true'
         uses: peaceiris/actions-gh-pages@v2
         env:
 #           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -65,6 +63,5 @@ jobs:
           DESTINATION_DIR: ghp_test_reports
 
       - name: Report Link
-        if: steps.check-artifacts-files.outputs.has_files == 'true'
         run: echo "https://murtaza9teen91.github.io/codecept_webdriver_framework/ghp_test_reports/${{ github.run_number }}"
     
