@@ -7,34 +7,36 @@ jobs:
 
   setup:
     runs-on: ubuntu-latest
-      steps:
+    steps:
       
-        - uses: actions/checkout@v2
-      
-        -name: upgrade chrome browser
-          sudo apt-get --only-upgrade install google-chrome-stable
-          
-        - name: tools version
+      - uses: actions/checkout@v2
+
+      - name: upgrade chrome browser
+        run: sudo apt-get --only-upgrade install google-chrome-stable
+
+      - name: tools version
+        run: |
           echo pwd: `pwd`
           echo node version: `node --version`
           echo npm version: `npm --version`
           echo google chrome browser version: `google-chrome --version`
-          
-        - name: install dependencies
-          npm install
-          
-        - name: remove previous test reports
-          npm run clean
-          
-        - name: install webdriver
-          npm install -g webdriver-manager
-          
-        - name: initiate webdriver
+
+      - name: install dependencies
+        run: npm install
+
+      - name: remove previous test reports
+        run: npm run clean
+
+      - name: install webdriver
+        run: npm install -g webdriver-manager
+
+      - name: initiate webdriver
+        run: |
           npm install -g webdriver-manager
           webdriver-manager update --versions.chrome=107.0.5304.121
           webdriver-manager start --versions.chrome=107.0.5304.121 &
           sleep 20
-          
-        - name: execute tests
-          run: sleep 20 && npm run test1-headless;
-              
+
+      - name: execute tests
+        run: sleep 20 && npm run test1-headless;
+
