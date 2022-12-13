@@ -7,6 +7,9 @@ jobs:
 
   setup:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        num-of-parallel-instances: [1,2]
     steps:
       
       - uses: actions/checkout@v2
@@ -38,5 +41,5 @@ jobs:
           sleep 20
 
       - name: execute tests
-        run: sleep 20 && npm run test1-headless;
+        run: sleep 20 && npm run test${{matrix.num-of-parallel-instances}}-headless;
 
