@@ -42,4 +42,10 @@ jobs:
 
       - name: execute tests
         run: sleep 20 && npm run test${{matrix.num-of-parallel-instances}}-headless;
+        
+      - name: uploading test results
+      - uses: actions/upload-artifact@v3
+        with:
+          name: tests-artifacts
+          path: report/
 
