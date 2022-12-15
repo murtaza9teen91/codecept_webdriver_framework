@@ -108,11 +108,11 @@ jobs:
               "text": "Tests completed successfully" ,
               "attachments": [
                 {
-                  "pretext": "${{ needs.report.outputs.report-link }}",
+                  "pretext": "${{ needs.report.outputs.report-link }} ${{ needs.tests.outputs.status }} ",
                   "color": "0FFF50",
                   "fields": [
                     {
-                      "title": "Status: ${{ needs.tests.outputs.status }}",
+                      "title": "Status ${{ needs.tests.outputs.status }}",
                       "short": true,
                       "value": " ${{ needs.tests.outputs.status }} "
                     }
