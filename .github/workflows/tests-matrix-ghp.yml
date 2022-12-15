@@ -93,7 +93,7 @@ jobs:
 
   slack:
     runs-on: ubuntu-latest
-    needs: report
+    needs: [report, tests]
     steps:
     
       - uses: actions/checkout@v2
