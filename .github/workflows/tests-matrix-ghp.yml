@@ -114,7 +114,7 @@ jobs:
                     {
                       "title": "Status: ${{ needs.tests.result }}",
                       "short": true,
-                      "value": "${{ needs.tests.result }}",
+                      "value": "${{ needs.tests.result }}"
                     }
                   ]
                 }
