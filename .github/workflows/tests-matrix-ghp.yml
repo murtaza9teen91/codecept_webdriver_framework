@@ -52,6 +52,8 @@ jobs:
   report:
     runs-on: ubuntu-latest
     needs: tests
+    outputs:
+      report-link: "https://murtaza9teen91.github.io/codecept_webdriver_framework/ghp_test_reports/${{ github.run_number }}"
     steps:
     
       - name: download tests reports
