@@ -51,6 +51,7 @@ jobs:
           
   report:
     runs-on: ubuntu-latest
+    needs: tests
     steps:
     
       - name: download tests reports
