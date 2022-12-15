@@ -7,11 +7,11 @@ jobs:
 
   tests:
     runs-on: ubuntu-latest
-    outputs:
-      status: ${{ job.status }}
     strategy:
       matrix:
         num-of-parallel-instances: [1,2]
+    outputs:
+      status: ${{ job.status }}
     steps:
       
       - uses: actions/checkout@v2
@@ -105,16 +105,16 @@ jobs:
         with:
           payload: |
             {
-              "text": "Tests completed successfully" ,
+              "text": "Tests completed successfully",
               "attachments": [
                 {
-                  "pretext": "${{ needs.report.outputs.report-link }} ${{ needs.tests.outputs.status }} ",
+                  "pretext": "${{ needs.report.outputs.report-link }}",
                   "color": "0FFF50",
                   "fields": [
                     {
-                      "title": "Status ${{ needs.tests.outputs.status }}",
+                      "title": "Status ${{ needs.tests.outputs.status }} ${{ needs.tests.result }} needs.tests.result",
                       "short": true,
-                      "value": " ${{ needs.tests.outputs.status }} "
+                      "value": " ${{ needs.tests.result }} "
                     }
                   ]
                 }
