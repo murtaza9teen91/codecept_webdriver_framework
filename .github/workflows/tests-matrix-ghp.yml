@@ -5,93 +5,93 @@ on:
 
 jobs:
 
-#   tests:
-#     runs-on: ubuntu-latest
-#     strategy:
-#       matrix:
-#         num-of-parallel-instances: [1,2]
-#     steps:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        num-of-parallel-instances: [1,2]
+    steps:
       
-#       - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-#       - name: upgrade chrome browser
-#         run: sudo apt-get --only-upgrade install google-chrome-stable
+      - name: upgrade chrome browser
+        run: sudo apt-get --only-upgrade install google-chrome-stable
 
-#       - name: tools version
-#         run: |
-#           echo pwd: `pwd`
-#           echo node version: `node --version`
-#           echo npm version: `npm --version`
-#           echo google chrome browser version: `google-chrome --version`
+      - name: tools version
+        run: |
+          echo pwd: `pwd`
+          echo node version: `node --version`
+          echo npm version: `npm --version`
+          echo google chrome browser version: `google-chrome --version`
 
-#       - name: install dependencies
-#         run: npm install
+      - name: install dependencies
+        run: npm install
 
-#       - name: remove previous test reports
-#         run: npm run clean
+      - name: remove previous test reports
+        run: npm run clean
 
-#       - name: install webdriver
-#         run: npm install -g webdriver-manager
+      - name: install webdriver
+        run: npm install -g webdriver-manager
 
-#       - name: initiate webdriver
-#         run: |
-#           npm install -g webdriver-manager
-#           webdriver-manager update --versions.chrome=107.0.5304.121
-#           webdriver-manager start --versions.chrome=107.0.5304.121 &
-#           sleep 20
+      - name: initiate webdriver
+        run: |
+          npm install -g webdriver-manager
+          webdriver-manager update --versions.chrome=107.0.5304.121
+          webdriver-manager start --versions.chrome=107.0.5304.121 &
+          sleep 20
 
-#       - name: execute tests
-#         run: sleep 20 && npm run test${{matrix.num-of-parallel-instances}}-headless;
+      - name: execute tests
+        run: sleep 20 && npm run test${{matrix.num-of-parallel-instances}}-headless;
         
-#       - name: uploading tests reports
-#         uses: actions/upload-artifact@v3
-#         with:
-#           name: tests-reports
-#           path: report/
+      - name: uploading tests reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: tests-reports
+          path: report/
           
-#   report:
-#     runs-on: ubuntu-latest
-#     needs: tests
-#     outputs:
-#       report-link: "https://murtaza9teen91.github.io/codecept_webdriver_framework/ghp_test_reports/${{ github.run_number }}"
-#     steps:
+  report:
+    runs-on: ubuntu-latest
+    needs: tests
+    outputs:
+      report-link: "https://murtaza9teen91.github.io/codecept_webdriver_framework/ghp_test_reports/${{ github.run_number }}"
+    steps:
     
-#       - name: download tests reports
-#         uses: actions/download-artifact@v3
-#         with:
-#           name: tests-reports
-#           path: report/
+      - name: download tests reports
+        uses: actions/download-artifact@v3
+        with:
+          name: tests-reports
+          path: report/
           
-#       - name: Get Allure history
-#         uses: actions/checkout@v2
-#         continue-on-error: true
-#         with:
-#           ref: test-reports
-#           path: test-reports
+      - name: Get Allure history
+        uses: actions/checkout@v2
+        continue-on-error: true
+        with:
+          ref: test-reports
+          path: test-reports
           
-#       - name: Allure Report action from marketplace
-#         uses: simple-elf/allure-report-action@master
-#         with:
-#           allure_results: report
-#           allure_report: test_matrix_reports_ghp
-#           gh_pages: test-reports
-#           allure_history: allure-history
-#           subfolder: test_matrix_reports_ghp
+      - name: Allure Report action from marketplace
+        uses: simple-elf/allure-report-action@master
+        with:
+          allure_results: report
+          allure_report: test_matrix_reports_ghp
+          gh_pages: test-reports
+          allure_history: allure-history
+          subfolder: test_matrix_reports_ghp
           
-#       - name: Deploy report to Github Pages
-#         uses: peaceiris/actions-gh-pages@v2
-#         env:
-#           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#           PUBLISH_BRANCH: test-reports
-#           PUBLISH_DIR: allure-history
-#           DESTINATION_DIR: test_matrix_reports_ghp
+      - name: Deploy report to Github Pages
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: test-reports
+          PUBLISH_DIR: allure-history
+          DESTINATION_DIR: test_matrix_reports_ghp
 
-#       - name: Report Link
-#         run: echo "https://murtaza9teen91.github.io/codecept_webdriver_framework/test_matrix_reports_ghp/${{ github.run_number }}"
+      - name: Report Link
+        run: echo "https://murtaza9teen91.github.io/codecept_webdriver_framework/test_matrix_reports_ghp/${{ github.run_number }}"
 
   slack:
     runs-on: ubuntu-latest
-#     needs: report
+    needs: report
     steps:
     
       - uses: actions/checkout@v2
@@ -103,7 +103,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "Tests completed successfully",
+              "text": "Tests completed successfully" ,
               "attachments": [
                 {
                   "pretext": "Deployment started",
@@ -112,7 +112,8 @@ jobs:
                     {
                       "title": "Status",
                       "short": true,
-                      "value": "Completed"
+                      "value": "Completed",
+                      "report": "${{needs.report.outputs.report-link}}"
                     }
                   ]
                 }
