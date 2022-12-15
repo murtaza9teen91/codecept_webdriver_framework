@@ -112,7 +112,7 @@ jobs:
                   "color": "0FFF50",
                   "fields": [
                     {
-                      "title": "Status ${{ needs.job0.outputs.job-status }} ${{ needs.job1.outputs.job-status }} ${{ needs.tests.result }} needs.tests.result",
+                      "title": "Status: ${{ needs.tests.result }}",
                       "short": true,
                       "value": " ${{ needs.tests.result }} "
                     }
