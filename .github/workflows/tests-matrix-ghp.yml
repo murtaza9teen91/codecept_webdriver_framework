@@ -7,6 +7,8 @@ jobs:
 
   tests:
     runs-on: ubuntu-latest
+    outputs:
+      status: ${{ job.status }}
     strategy:
       matrix:
         num-of-parallel-instances: [1,2]
@@ -106,13 +108,13 @@ jobs:
               "text": "Tests completed successfully" ,
               "attachments": [
                 {
-                  "pretext": "Deployment started",
+                  "pretext": "${{needs.report.outputs.report-link}}",
                   "color": "0FFF50",
                   "fields": [
                     {
                       "title": "Status",
-                      "short": true,
-                      "value": "Completed",
+                      "short": false,
+                      "value": "${{ needs.tests.outputs.status }}",
                       "report": "${{needs.report.outputs.report-link}}"
                     }
                   ]
