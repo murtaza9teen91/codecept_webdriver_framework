@@ -43,9 +43,46 @@ jobs:
       - name: execute tests
         run: sleep 20 && npm run test${{matrix.num-of-parallel-instances}}-headless;
         
-      - name: uploading test results
+      - name: uploading tests reports
         uses: actions/upload-artifact@v3
         with:
-          name: tests-artifacts
+          name: tests-reports
           path: report/
+          
+  report:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: download tests reports
+        uses: actions/download-artifact@v3
+        with:
+          name: tests-reports
+          path: report/
+          
+      - name: Get Allure history
+        uses: actions/checkout@v2
+        continue-on-error: true
+        with:
+          ref: test-reports
+          path: test-reports
+          
+      - name: Allure Report action from marketplace
+        uses: simple-elf/allure-report-action@master
+        with:
+          allure_results: report
+          allure_report: test_matrix_reports_ghp
+          gh_pages: test-reports
+          allure_history: allure-history
+          subfolder: test_matrix_reports_ghp
+          
+      - name: Deploy report to Github Pages
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: test-reports
+          PUBLISH_DIR: allure-history
+          DESTINATION_DIR: test_matrix_reports_ghp
+
+      - name: Report Link
+        run: echo "https://murtaza9teen91.github.io/codecept_webdriver_framework/test_matrix_reports_ghp/${{ github.run_number }}"
 
