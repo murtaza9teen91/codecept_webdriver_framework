@@ -53,6 +53,7 @@ jobs:
           
   report:
     runs-on: ubuntu-latest
+    if: always()
     needs: tests
     outputs:
       report-link: "https://murtaza9teen91.github.io/codecept_webdriver_framework/test_matrix_reports_ghp/${{ github.run_number }}"
@@ -93,6 +94,7 @@ jobs:
 
   slack:
     runs-on: ubuntu-latest
+    if: always()
     needs: [report, tests]
     steps:
     
