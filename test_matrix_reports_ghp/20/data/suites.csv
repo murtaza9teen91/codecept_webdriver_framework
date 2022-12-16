@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu Dec 15 15:33:34 GMT 2022","Thu Dec 15 15:33:48 GMT 2022","13803","","GS @google","","GS @google","visit google url","visit google url",""
-"passed","Thu Dec 15 15:33:28 GMT 2022","Thu Dec 15 15:33:30 GMT 2022","1847","","FS @facebook","","FS @facebook","visit facebook url","visit facebook url",""
