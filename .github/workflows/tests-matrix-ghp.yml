@@ -124,5 +124,5 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 #           ${{ (<boolean> && 'true value') || 'false value' }}
-          color-code: ${{ (${{ needs.tests.result }} == 'success' ) && '0FFF50' || 'FF0000' }}
+          color-code: ${{ ( needs.tests.result == 'success' ) && '0FFF50' || 'FF0000' }}
     
