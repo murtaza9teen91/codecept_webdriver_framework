@@ -20,7 +20,10 @@ exports.config = {
       },
       coloredLogs: true,
       waitForTimeout: 60
-    }
+    },
+    ChaiWrapper: {
+      require: 'codeceptjs-chai',
+    },
   },
   
   // BDD stesps and feature files paths and pattern
