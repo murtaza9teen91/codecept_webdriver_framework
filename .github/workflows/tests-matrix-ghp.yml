@@ -109,7 +109,7 @@ jobs:
               "attachments": [
                 {
                   "pretext": "${{ needs.report.outputs.report-link }}",
-                  "color": "0FFF50",
+                  "color": "${{ env.color-code }}",
                   "fields": [
                     {
                       "title": "Status: ${{ needs.tests.result }}",
@@ -123,4 +123,6 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+#           ${{ (<boolean> && 'true value') || 'false value' }}
+          color-code: ${{ (${{ needs.tests.result }} == 'success' ) && '0FFF50' || 'FF0000' }}
     
