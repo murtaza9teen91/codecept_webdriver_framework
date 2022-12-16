@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        num-of-parallel-instances: [1,2,3]
+        num-of-parallel-instances: [1,3]
     outputs:
       job-status: ${{ job.status }}
     steps:
