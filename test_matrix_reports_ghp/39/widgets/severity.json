@@ -1,0 +1,1 @@
+[{"uid":"16d98ef30f30e3b0","name":"visit google url","time":{"start":1671280905416,"stop":1671280907379,"duration":1963},"status":"passed","severity":"normal"},{"uid":"d92e562136a84cd6","name":"This test should fail","time":{"start":1671280901525,"stop":1671280906793,"duration":5268},"status":"failed","severity":"normal"}]
