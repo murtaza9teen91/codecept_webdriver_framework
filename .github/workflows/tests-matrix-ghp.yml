@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        num-of-parallel-instances: [1,2]
+        num-of-parallel-instances: [1,3]
     outputs:
       job-status: ${{ job.status }}
     steps:
@@ -43,9 +43,10 @@ jobs:
           sleep 20
 
       - name: execute tests
-        run: sleep 20 && npm run test${{matrix.num-of-parallel-instances}}-headless;
+        run: npm run test${{matrix.num-of-parallel-instances}}-headless;
         
       - name: uploading tests reports
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: tests-reports
@@ -53,6 +54,7 @@ jobs:
           
   report:
     runs-on: ubuntu-latest
+    if: always()
     needs: tests
     outputs:
       report-link: "https://murtaza9teen91.github.io/codecept_webdriver_framework/test_matrix_reports_ghp/${{ github.run_number }}"
@@ -93,6 +95,7 @@ jobs:
 
   slack:
     runs-on: ubuntu-latest
+    if: always()
     needs: [report, tests]
     steps:
     
