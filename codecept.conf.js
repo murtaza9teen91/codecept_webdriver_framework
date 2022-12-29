@@ -15,7 +15,7 @@ exports.config = {
       browser: 'chrome',
       desiredCapabilities: {
         chromeOptions: {
-          args: [ "--disable-gpu", "--no-sandbox" ]
+          args: [ "--disable-gpu", "--no-sandbox" ],
         }
       },
       coloredLogs: true,

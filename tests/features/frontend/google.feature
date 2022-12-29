@@ -5,5 +5,4 @@ Feature: GS
 
     Scenario: visit google url
     Given I visit 'https://www.google.com/' URL
-
     
