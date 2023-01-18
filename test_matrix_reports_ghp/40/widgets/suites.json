@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"ca30dc356caa113bfe147e1f041b908b","name":"Failing tests @fail","statistic":{"failed":1,"broken":0,"skipped":0,"passed":0,"unknown":0,"total":1}},{"uid":"bcd223b49b1777ba53031279fcf6b828","name":"Amazon Console Errors @google","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}

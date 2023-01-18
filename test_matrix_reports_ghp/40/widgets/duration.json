@@ -1,0 +1,1 @@
+[{"uid":"b7256a47d9075f1d","name":"This test should fail","time":{"start":1674057329133,"stop":1674057330856,"duration":1723},"status":"failed","severity":"normal"},{"uid":"74fdf10cfc4286b1","name":"visit amazon url and validate console errors","time":{"start":1674057327091,"stop":1674057330364,"duration":3273},"status":"passed","severity":"normal"}]
