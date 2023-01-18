@@ -12,6 +12,20 @@ class CommonHelper extends Helper {
     return await isRequestLoaded;
   }
 
+  async getConsoleErrors(){
+    const browser = await this.helpers.WebDriver.browser;
+    // retrieving Browser Logs
+    const browserLogs = await browser.getLogs('browser');
+    const browserConsoleErrors = await browserLogs.map(function(a) { 
+      // SEVERE represents Errors in console
+      if ( a.level === 'SEVERE' )
+        { return a.message;}
+    })
+    // removing undefined which was getting added for all Warnings
+    .filter(notUndefined => notUndefined !== undefined);
+    return browserConsoleErrors;
+  }
+
   // method which restarts browser
   async restartBrowser() {
     const browser = await this.helpers.WebDriver.browser;

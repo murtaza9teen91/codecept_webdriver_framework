@@ -31,10 +31,6 @@ exports.config = {
     features: "./tests/features/**/*.feature",
     steps: "./tests/steps/**/*_steps.js"
   },
- 
-  // include: {
-  //   I: './steps_file.js'
-  // },
 
   bootstrapAll: require( './bootstrap_all.js' ),
   bootstrap: require('./bootstrap.js'),
